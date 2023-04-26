@@ -1,7 +1,11 @@
 package com.tiooooo.borutoapp.di
 
+import androidx.paging.ExperimentalPagingApi
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
+import com.tiooooo.borutoapp.data.local.BorutoDatabase
 import com.tiooooo.borutoapp.data.remote.api.BorutoApi
+import com.tiooooo.borutoapp.data.remote.data_source.RemoteDataSourceImpl
+import com.tiooooo.borutoapp.domain.data_source.RemoteDataSource
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -43,5 +47,15 @@ object NetworkModule {
     @Singleton
     fun provideBorutoApi(retrofit: Retrofit): BorutoApi {
         return retrofit.create(BorutoApi::class.java)
+    }
+
+    @OptIn(ExperimentalPagingApi::class)
+    @Provides
+    @Singleton
+    fun provideRemoteDataSource(
+        borutoApi: BorutoApi,
+        borutoDatabase: BorutoDatabase,
+    ): RemoteDataSource {
+        return RemoteDataSourceImpl(borutoApi, borutoDatabase)
     }
 }
