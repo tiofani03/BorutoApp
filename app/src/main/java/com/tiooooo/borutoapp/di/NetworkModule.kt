@@ -37,7 +37,7 @@ object NetworkModule {
     fun provideRetrofitInstance(): Retrofit {
         val contentType = MediaType.get("application/json")
         return Retrofit.Builder()
-            .baseUrl("https://api.jikan.moe/v3")
+            .baseUrl("https://api.jikan.moe/v3/")
             .client(provideHttpClient())
             .addConverterFactory(Json.asConverterFactory(contentType))
             .build()
