@@ -5,6 +5,7 @@ import com.tiooooo.borutoapp.data.repository.DataStoreOperationsImpl
 import com.tiooooo.borutoapp.data.repository.Repository
 import com.tiooooo.borutoapp.domain.repository.DataStoreOperations
 import com.tiooooo.borutoapp.domain.use_cases.UseCases
+import com.tiooooo.borutoapp.domain.use_cases.get_all_heroes.GetAllHeroesUseCase
 import com.tiooooo.borutoapp.domain.use_cases.read_onboarding.ReadOnBoardingUseCase
 import com.tiooooo.borutoapp.domain.use_cases.save_onboarding.SaveOnBoardingUseCase
 import dagger.Module
@@ -34,6 +35,7 @@ object RepositoryModule {
         return UseCases(
             saveOnBoardingUseCase = SaveOnBoardingUseCase(repository = repository),
             readOnBoardingUseCase = ReadOnBoardingUseCase(repository = repository),
+            getAllHeroesUseCase = GetAllHeroesUseCase(repository = repository)
         )
     }
 }
