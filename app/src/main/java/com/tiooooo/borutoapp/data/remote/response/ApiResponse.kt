@@ -1,6 +1,6 @@
 package com.tiooooo.borutoapp.data.remote.response
 
-import kotlinx.serialization.SerialName
+import com.tiooooo.borutoapp.domain.model.Hero
 import kotlinx.serialization.Serializable
 
 @Serializable
@@ -9,5 +9,6 @@ data class ApiResponse(
     val message: String? = null,
     val prevPage: Int? = null,
     val nextPage: Int? = null,
-    var data: List<HeroResponse> = emptyList()
+    var heroes: List<Hero> = emptyList(),
+    val lastUpdated: Long? = null,
 )
