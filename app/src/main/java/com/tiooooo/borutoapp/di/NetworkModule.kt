@@ -10,6 +10,7 @@ import com.tiooooo.borutoapp.data.local.BorutoDatabase
 import com.tiooooo.borutoapp.data.remote.api.BorutoApi
 import com.tiooooo.borutoapp.data.remote.data_source.RemoteDataSourceImpl
 import com.tiooooo.borutoapp.domain.data_source.RemoteDataSource
+import com.tiooooo.borutoapp.utils.Constants
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -43,7 +44,7 @@ object NetworkModule {
     fun provideRetrofitInstance(@ApplicationContext context: Context): Retrofit {
         val contentType = MediaType.get("application/json")
         return Retrofit.Builder()
-            .baseUrl("http://192.168.1.5:8080/")
+            .baseUrl(Constants.BASE_URl)
             .client(provideHttpClient(context))
             .addConverterFactory(Json.asConverterFactory(contentType))
             .build()
