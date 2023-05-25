@@ -7,6 +7,7 @@ import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import androidx.paging.compose.collectAsLazyPagingItems
+import com.tiooooo.borutoapp.navigation.Screen
 import com.tiooooo.borutoapp.presentation.common.ListContent
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
@@ -18,7 +19,13 @@ fun HomeScreen(
     val allHeroes = homeViewModel.getAllHeroes.collectAsLazyPagingItems()
     Scaffold(
         modifier = Modifier,
-        topBar = { HomeTopBar(onSearchClick = { }) },
+        topBar = {
+            HomeTopBar(
+                onSearchClick = {
+                    navController.navigate(Screen.Search.route)
+                }
+            )
+        },
         content = {
             ListContent(
                 heroes = allHeroes,
