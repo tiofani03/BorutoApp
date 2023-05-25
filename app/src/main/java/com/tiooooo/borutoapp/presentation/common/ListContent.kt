@@ -81,8 +81,8 @@ fun handlePagingResult(
     heroes.apply {
         val error = when {
             loadState.refresh is LoadState.Error -> loadState.refresh as LoadState.Error
-            loadState.prepend is LoadState.Error -> loadState.refresh as LoadState.Error
-            loadState.append is LoadState.Error -> loadState.refresh as LoadState.Error
+            loadState.prepend is LoadState.Error -> loadState.prepend as LoadState.Error
+            loadState.append is LoadState.Error -> loadState.append as LoadState.Error
             else -> null
         }
 
@@ -91,7 +91,12 @@ fun handlePagingResult(
                 ShimmerEffect()
                 false
             }
-            error != null -> false
+            error != null ->{
+                EmptyScreen(error = error) {
+
+                }
+                false
+            }
             else -> true
         }
     }
