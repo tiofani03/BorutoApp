@@ -1,12 +1,15 @@
 package com.tiooooo.borutoapp.presentation.screen.search
 
+import android.annotation.SuppressLint
 import androidx.compose.material.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import androidx.paging.compose.collectAsLazyPagingItems
+import com.tiooooo.borutoapp.presentation.common.ListContent
 
+@SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
 fun SearchScreen(
     navController: NavHostController,
@@ -29,8 +32,9 @@ fun SearchScreen(
                     navController.popBackStack()
                 }
             )
+        },
+        content = {
+            ListContent(heroes = heroes, navController = navController)
         }
-    ) {
-
-    }
+    )
 }

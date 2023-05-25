@@ -11,7 +11,7 @@ interface BorutoApi {
         @Query("page") page: Int = 1,
     ): ApiResponse
 
-    @GET("/boruto/getAllHeroes/search")
+    @GET("/boruto/heroes/search")
     suspend fun searchHeroes(
         @Query("name") name: String,
     ): ApiResponse
