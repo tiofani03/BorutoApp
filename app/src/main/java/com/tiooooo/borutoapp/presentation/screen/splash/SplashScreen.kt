@@ -57,38 +57,18 @@ fun SplashScreen(
 fun Splash(rotateDegrees: Float) {
     val logoResId = R.drawable.ic_logo
     val logoContentDesc = stringResource(R.string.app_logo)
-    if (isSystemInDarkTheme()) {
-        Box(
-            modifier = Modifier
-                .background(
-                    Color.Black
-                )
-                .fillMaxSize(),
-            contentAlignment = Alignment.Center
-        ) {
-            Image(
-                modifier = Modifier.rotate(rotateDegrees),
-                painter = painterResource(logoResId),
-                contentDescription = logoContentDesc
-            )
-        }
-    } else {
-        Box(
-            modifier = Modifier
-                .background(
-                    Brush.verticalGradient(
-                        listOf(Purple700, Purple500)
-                    )
-                )
-                .fillMaxSize(),
-            contentAlignment = Alignment.Center
-        ) {
-            Image(
-                modifier = Modifier.rotate(rotateDegrees),
-                painter = painterResource(logoResId),
-                contentDescription = logoContentDesc
-            )
-        }
+    val modifier = if (!isSystemInDarkTheme()) Modifier.background(Brush.verticalGradient(listOf(
+        Purple700, Purple500))) else Modifier.background(Color.Black)
+    Box(
+        modifier = modifier
+            .fillMaxSize(),
+        contentAlignment = Alignment.Center
+    ) {
+        Image(
+            modifier = Modifier.rotate(rotateDegrees),
+            painter = painterResource(logoResId),
+            contentDescription = logoContentDesc
+        )
     }
 }
 

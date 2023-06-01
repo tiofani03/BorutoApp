@@ -1,6 +1,7 @@
 package com.tiooooo.borutoapp.presentation.screen.detail
 
 import android.graphics.Color.parseColor
+import android.view.WindowInsets.Side
 import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -30,6 +31,7 @@ import androidx.compose.material.rememberBottomSheetScaffoldState
 import androidx.compose.material.rememberBottomSheetState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.SideEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -80,9 +82,11 @@ fun DetailContent(
     }
 
     val systemUiController = rememberSystemUiController()
-    systemUiController.setStatusBarColor(
-        color = Color(parseColor(darkVibrant))
-    )
+    SideEffect {
+        systemUiController.setStatusBarColor(
+            color = Color(parseColor(darkVibrant))
+        )
+    }
 
 
     val scaffoldState = rememberBottomSheetScaffoldState(
